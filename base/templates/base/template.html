@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+	<head>
+        <title>EVG-Lint</title>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+		
+		<link href="{% static "base/plugins/global/plugins.bundle.css" %}" rel="stylesheet" type="text/css" />
+		<link href="{% static "base/css/style.bundle.css" %}" rel="stylesheet" type="text/css" />
+		
+	</head>
+
+	<body id="kt_body" class="page-loading-enabled page-loading">
+        <div class="page-loader">
+			<span class="spinner-border text-primary" role="status">
+				<span class="visually-hidden">Loading...</span>
+			</span>
+		</div>
+        
+		<div class="container">
+			{% block main %}
+			{% endblock %}
+		</div>
+
+		<script>var hostUrl = "{% static "" %}";</script>
+		<script src="{% static "base/plugins/global/plugins.bundle.js" %}"></script>
+		<script src="{% static "base/js/scripts.bundle.js" %}"></script>
+	</body>
+</html>

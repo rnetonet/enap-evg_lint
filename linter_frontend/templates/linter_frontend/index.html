@@ -1,0 +1,22 @@
+{% extends "base/template.html" %}
+{% load django_bootstrap5 %}
+
+{% block main %}
+<div class="card card-bordered mt-5">
+    <div class="card-header">
+        <h3 class="card-title">EVG-Lint</h3>
+    </div>
+    <div class="card-body">
+        {% if not report %}
+        <form action="" method="post" class="form">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            {% bootstrap_button button_type="submit" content="OK" %}
+        </form>
+        {% else %}
+            REPORT GOES HERE
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}
