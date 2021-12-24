@@ -7,14 +7,34 @@
         <h3 class="card-title">EVG-Lint</h3>
     </div>
     <div class="card-body">
-        {% if not report %}
+        {% if not checks %}
         <form action="" method="post" class="form">
             {% csrf_token %}
             {% bootstrap_form form %}
             {% bootstrap_button button_type="submit" content="OK" %}
         </form>
         {% else %}
-            REPORT GOES HERE
+            <table class="table table-rounded table-striped border">
+                <thead>
+                    <th>#</th>
+                    <th>Verificação</th>
+                    <th>Status</th>
+                </thead>
+                <tbody>
+                    {% for check in checks %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ check.description }}</td>
+                        <td>
+                            {% if check.result %}
+                            <span class="badge badge-success">Ok</span>
+                            {% else %}
+                            <span class="badge badge-danger">Ajuste necessário</span>
+                            {% endif %}
+                        </td>
+                    {% endfor %}
+                </tbody>
+            </table>
         {% endif %}
     </div>
 </div>

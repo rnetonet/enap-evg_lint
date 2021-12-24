@@ -16,11 +16,7 @@ class IndexView(FormView, TemplateResponseMixin):
         login = cd['login']
         password = cd['password']
         
-        report = []
-
         # login
-        robot = Robot(login_url=moodle_login_url, login=login, password=password)
-            
-            
+        robot = Robot(login_url=moodle_login_url, login=login, password=password, course_url=moodle_course_url)           
 
-        return super().render_to_response(context={"form": form, "report": report})
+        return super().render_to_response(context={"form": form, "checks": robot.checks})
